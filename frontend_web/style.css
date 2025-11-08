@@ -1,0 +1,151 @@
+/* styles.css - Layout Moderno */
+
+/* Cores e Fontes Globais */
+:root {
+    --primary-color: #4A90E2; /* Azul vibrante */
+    --secondary-color: #F0F2F5; /* Cinza claro de fundo */
+    --background-color: #E8EEF5; /* Fundo do corpo */
+    --text-color: #333;
+    --border-color: #E0E0E0;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    --shadow-medium: rgba(0, 0, 0, 0.1);
+    --message-client-bg: #DCF8C6; /* Verde claro para minhas mensagens */
+    --message-server-bg: #E0E0E0; /* Cinza claro para mensagens do servidor */
+    --message-system-color: #616161;
+}
+
+body { 
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+    margin: 0; 
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ocupa a altura total da viewport */
+}
+
+/* Container Principal do Chat */
+#chat-container { 
+    width: 100%;
+    max-width: 450px; /* Largura ideal para chat */
+    min-height: 600px; /* Altura mínima para o chat */
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 10px 30px var(--shadow-medium);
+    overflow: hidden; /* Garante bordas arredondadas */
+}
+
+/* Cabeçalho do Chat */
+#chat-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 20px;
+    font-size: 1.1em;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Área de Mensagens */
+#messages { 
+    flex-grow: 1; /* Ocupa o espaço restante */
+    overflow-y: auto; /* Scroll apenas aqui */
+    padding: 15px; 
+    background-color: var(--secondary-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Área de Input */
+#input-area { 
+    display: flex; 
+    padding: 15px;
+    background-color: white;
+    align-items: center; /* Alinha verticalmente */
+}
+#messageInput { 
+    flex-grow: 1; 
+    padding: 10px 15px; 
+    border: 1px solid var(--border-color); 
+    border-radius: 20px; /* Bordas arredondadas */
+    outline: none; /* Remove o outline padrão no focus */
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+#messageInput:focus {
+    border-color: var(--primary-color);
+}
+
+#sendButton { 
+    padding: 10px 15px; 
+    margin-left: 10px; 
+    background-color: var(--primary-color); 
+    color: white; 
+    border: none; 
+    border-radius: 50%; /* Botão redondo */
+    width: 40px; /* Largura e altura para fazer um círculo */
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.2em; /* Tamanho do ícone */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+#sendButton:hover {
+    background-color: #387bd8; /* Tom mais escuro no hover */
+    transform: scale(1.05);
+}
+#sendButton:active {
+    transform: scale(0.95);
+}
+
+/* Estilo das Mensagens Individuais */
+.chat-message { 
+    margin-bottom: 10px; 
+    padding: 10px 15px;
+    border-radius: 18px; /* Bordas mais arredondadas */
+    max-width: 80%; /* Ocupa um pouco mais de espaço */
+    word-wrap: break-word; /* Quebra palavras longas */
+    box-shadow: 0 1px 2px var(--shadow-light);
+}
+.chat-message strong {
+    font-weight: 600;
+}
+.client { 
+    background-color: var(--message-client-bg);
+    color: #333;
+    margin-left: auto; /* Alinha à direita */
+    border-bottom-right-radius: 2px; /* Pequeno detalhe de design */
+}
+.server { 
+    background-color: var(--message-server-bg);
+    color: #333;
+    margin-right: auto; /* Alinha à esquerda */
+    border-bottom-left-radius: 2px; /* Pequeno detalhe de design */
+}
+.system { 
+    color: var(--message-system-color); 
+    font-style: italic; 
+    text-align: center; 
+    font-size: 0.85em;
+    margin: 15px 0;
+    max-width: 100%; /* Reseta max-width para mensagens do sistema */
+    box-shadow: none; /* Remove sombra */
+    background-color: transparent;
+}
+
+/* Responsividade Básica para telas menores */
+@media (max-width: 768px) {
+    #chat-container {
+        margin: 20px auto;
+        min-height: 85vh;
+        border-radius: 0; /* Remove bordas arredondadas em telas pequenas */
+        box-shadow: none;
+    }
+    body {
+        align-items: flex-start; /* Alinha ao topo em telas menores */
+    }
+}
